@@ -1,0 +1,119 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget{
+  const MyApp({super.key});
+
+
+
+  @override
+  Widget build(BuildContext context) {
+   return MaterialApp(home: HomeActivity(),
+   debugShowCheckedModeBanner: false,
+   );
+  }
+  
+}
+
+
+
+class HomeActivity extends StatelessWidget{
+   HomeActivity({super.key});
+
+  Mysncbar(messege, context){
+    return ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(messege))
+    );
+  }
+  ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+    minimumSize: Size(double.infinity, 50),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Invantory App'),
+      toolbarHeight: 60,
+        toolbarOpacity: 1,
+        elevation: 60,
+        titleSpacing: 12,
+        backgroundColor: Colors.blue,
+        actions: [
+          IconButton(onPressed: (){Mysncbar('you can search here', context);}, icon: Icon(Icons.search)),
+          IconButton(onPressed: (){Mysncbar('messege here', context);}, icon: Icon(Icons.message)),
+          IconButton(onPressed: (){Mysncbar('setting option', context);}, icon: Icon(Icons.settings)),
+        ],
+
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        elevation:10,
+        child: Icon(Icons.add),
+        backgroundColor: Colors.cyan,
+        onPressed: (){},
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.message), label: "messege"),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "profile"),
+        ],
+        onTap: (index) {
+          if (index ==0){
+            Mysncbar('this is messege manu', context);
+          }
+          if(index ==1){
+            Mysncbar('this is home manu', context);
+          }
+          if(index == 2){
+            Mysncbar('this is profile manu', context);
+          }
+        }
+    ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(child: UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              accountName: Text('Sagor ahamed'),
+              accountEmail: Text('sagor@gmail.com'),
+
+            ),),
+            ListTile(title: Text('Home'),leading: Icon(Icons.home),onTap: (){Mysncbar('this is home', context);},),
+            ListTile(title: Text('profile'),leading: Icon(Icons.person),onTap: (){Mysncbar('this is profile', context);},),
+            ListTile(title: Text('All invantory'),leading: (Icon(Icons.inventory)),onTap: (){Mysncbar('Invantory', context);},),
+            ListTile(title: Text('contract us'),leading: Icon(Icons.contact_emergency),onTap: (){Mysncbar('contrat with us', context);},),
+          ],
+        ),
+      ),
+      endDrawer: Drawer(child: ListView(
+          children: [
+            DrawerHeader(child: UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              accountName: Text('Sagor ahamed'),
+              accountEmail: Text('sagor@gmail.com'),
+
+            ),),
+            ListTile(title: Text('Home'),leading: Icon(Icons.home),onTap: (){Mysncbar('this is home', context);},),
+            ListTile(title: Text('profile'),leading: Icon(Icons.person),onTap: (){Mysncbar('this is profile', context);},),
+            ListTile(title: Text('All invantory'),leading: (Icon(Icons.inventory)),onTap: (){Mysncbar('Invantory', context);},),
+            ListTile(title: Text('contract us'),leading: Icon(Icons.contact_emergency),onTap: (){Mysncbar('contrat with us', context);},),
+          ],
+        ),),
+     body: Column(
+       mainAxisAlignment: MainAxisAlignment.start,
+       children: [
+         Padding(padding: EdgeInsets.all(20),child: TextField(decoration: InputDecoration(border: OutlineInputBorder(),label: Text('First name')),),),
+         Padding(padding: EdgeInsets.all(20),child: TextField(decoration: InputDecoration(border: OutlineInputBorder(),label: Text('last name')),),),
+         Padding(padding: EdgeInsets.all(20),child: TextField(decoration: InputDecoration(border: OutlineInputBorder(),label: Text('email address')),),),
+         Padding(padding: EdgeInsets.all(20),child: ElevatedButton(onPressed: (){},child: Text("submit"),style: (buttonStyle),),),
+       ],
+     ),
+    );
+  }
+  
+}
