@@ -1,0 +1,30 @@
+abstract class Area {
+  void area();
+}
+
+abstract class Perimeter {
+  void perimeter();
+}
+
+class Rectangle implements Area, Perimeter {
+  int legth;
+  int  breadth;
+ 
+
+  Rectangle(this. breadth, this.legth);
+
+  @override
+  void area() {
+    print('area is ${legth *  breadth}');
+  }
+
+  @override
+  void perimeter() {
+    print('this is prister ${2 * (legth +  breadth)}');
+  }
+}
+void main(){
+  Rectangle rectangle = Rectangle(50,20);
+  rectangle.area();
+  rectangle.perimeter();
+}
