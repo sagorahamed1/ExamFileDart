@@ -1,0 +1,82 @@
+abstract class Employee {
+  String? name;
+  int? employeeid;
+
+  Employee({this.name, this.employeeid});
+  
+  void infoAndsalary(){}
+}
+
+class FullTimeEmployee extends Employee {
+  double hourlyRate;
+  double? monthlytotalHoure;
+
+  FullTimeEmployee(
+      {required String name,
+      required int employeeid,
+      required this.hourlyRate,
+      required this.monthlytotalHoure})
+      : super(name: name, employeeid: employeeid);
+  
+@override
+  void infoAndsalary() {
+    print('Employee information');
+    print('Name: $name Id card no: $employeeid');
+    print('current Salary: ${hourlyRate * monthlytotalHoure!}');
+  }
+}
+
+class PartTimeEmployee extends Employee {
+  double hourlyRate;
+  double? monthlytotalHoure;
+
+  PartTimeEmployee(
+      {required String name,
+      required int employeeid,
+      required this.hourlyRate,
+      required this.monthlytotalHoure})
+      : super(name: name, employeeid: employeeid);
+  
+@override
+  void infoAndsalary() {
+    print('Employee information');
+    print('Name: $name Id card no: $employeeid');
+    print(
+        'Current salary: ${hourlyRate * monthlytotalHoure!}');
+  }
+}
+
+class Contract extends Employee {
+  double contract;
+
+  Contract(
+      {required String name, required int employeeid, required this.contract})
+      : super(name: name, employeeid: employeeid);
+  
+@override
+  void infoAndsalary() {
+    print('Employee information');
+    print('Name: $name Id card no: $employeeid');
+    print('Current saraly: $contract');
+  }
+}
+
+void main() {
+  var fulltimejober = FullTimeEmployee(
+      name: 'Amirul sir',
+      employeeid: 1001,
+      hourlyRate: 150,
+      monthlytotalHoure: 240);
+  fulltimejober.infoAndsalary();
+
+  var partTimejober = PartTimeEmployee(
+      name: 'shiku sir',
+      employeeid: 2001,
+      hourlyRate: 150,
+      monthlytotalHoure: 180);
+  partTimejober.infoAndsalary();
+
+  var contratjober =
+      Contract(name: 'Babul sir', employeeid: 0001, contract: 50000);
+  contratjober.infoAndsalary();
+}
