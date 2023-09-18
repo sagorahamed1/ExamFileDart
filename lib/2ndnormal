@@ -1,0 +1,42 @@
+import 'dart:math';
+
+
+// This is compound interest calculation.
+var compoundeInterests = (double principleAmount, int tenure, double interestRate) {
+  print("principle Amount: $principleAmount TK  Tenure : $tenure Year   Interest Rate: $interestRate%  Total amount:"
+      "${principleAmount * pow(1 + interestRate / 100, tenure) - principleAmount + principleAmount}TK");
+};
+
+
+// This is simple interest calculation.
+var simpleInterest = (double principleAmount, int tenure, double interestRate) {
+  print("principle Amount: $principleAmount    Tenure: $tenure  Interest Rate: $interestRate  Total interest:${(principleAmount *
+          interestRate * tenure) / 100 + principleAmount}");
+};
+
+void main() {
+  print('This is compount interest information');
+
+
+  List compound = [
+    compoundeInterests(100000, 7, 8.0),
+    compoundeInterests(200000, 8, 10.0),
+    compoundeInterests(400000, 6, 15.0),
+    compoundeInterests(600000, 9, 12.0),
+    compoundeInterests(900000, 8, 12.0),
+  ];
+
+  print('============================================================================================');
+  // Calculate simple profit.
+  print('This is for simple interest calculation');
+
+
+  var simples = [
+    simpleInterest(100000, 8, 8.0),
+    simpleInterest(200000, 7, 7.0),
+    simpleInterest(500000, 9, 10.0),
+    simpleInterest(700000, 9, 10.0),
+    simpleInterest(900000, 8, 9.0),
+  ];
+
+}
